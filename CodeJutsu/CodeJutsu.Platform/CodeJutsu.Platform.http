@@ -1,0 +1,6 @@
+@CodeJutsu.Platform_HostAddress = http://localhost:5087
+
+GET {{CodeJutsu.Platform_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

@@ -12,5 +12,10 @@ namespace CodeJutsu.Platform.Data
 
         public DbSet<Problem> Problems => Set<Problem>();
         public DbSet<Submission> Submissions => Set<Submission>();
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+        }
     }
 }

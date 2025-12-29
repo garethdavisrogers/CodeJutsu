@@ -9,6 +9,8 @@ public sealed class Problem
     public string Id { get; init; } = default!;
     public int SchemaVersion { get; init; } = 1;
 
+    public DateTimeOffset CreatedAt { get; init; } = DateTimeOffset.UtcNow;
+
     public string Title { get; init; } = default!;
     public string Prompt { get; init; } = default!;
     public string Difficulty { get; init; } = default!;  // later: enum

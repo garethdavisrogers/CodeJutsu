@@ -1,27 +1,34 @@
 ﻿using CodeJutsu.Platform.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace CodeJutsu.Platform.Data
 {
-    public interface IProblemRepo {
-        Task<Problem?> GetAsync();
-        Task<List<Problem>> ListAsync();
-        Task AddAsync();
-        Task SaveAsync();
-        Task DeleteAsync();
+    public interface IProblemRepo
+    {
+        Task<Problem?> GetAsync(Guid id, CancellationToken ct = default);
+        Task<List<Problem>> ListAsync(int take = 50, CancellationToken ct = default);
+        Task AddAsync(Problem problem, CancellationToken ct = default);
+        Task SaveAsync(CancellationToken ct = default);
     }
-    public sealed class ProblemRepo: IProblemRepo
+
+    public sealed class ProblemRepo : IProblemRepo
     {
         private readonly CodeJutsuDb _db;
         public ProblemRepo(CodeJutsuDb db) => _db = db;
 
-        public Task<Problem?> GetAsync() { }
+        public Task<Problem?> GetAsync(Guid id, CancellationToken ct = default) =>
+            _db.Problems.AsNoTracking().FirstOrDefaultAsync(p => p.Id == id.ToString(), ct);
 
-        public Task<List<Problem>> ListAsync() { }
+        public Task<List<Problem>> ListAsync(int take = 50, CancellationToken ct = default) =>
+            _db.Problems.AsNoTracking()
+                .OrderByDescending(p => p.CreatedAt)
+                .Take(take)
+                .ToListAsync(ct);
 
-        public Task AddAsync() { }
+        public Task AddAsync(Problem problem, CancellationToken ct = default) =>
+            _db.Problems.AddAsync(problem, ct).AsTask();
 
-        public Task SaveAsync() { }
-
-        public Task DeleteAsync() { }
+        public Task SaveAsync(CancellationToken ct = default) => _db.SaveChangesAsync(ct);
     }
+
 }

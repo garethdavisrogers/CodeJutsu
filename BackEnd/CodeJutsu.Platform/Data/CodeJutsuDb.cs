@@ -9,5 +9,8 @@ namespace CodeJutsu.Platform.Data
     public sealed class CodeJutsuDb: IdentityDbContext<User, IdentityRole<Guid>, Guid>
     {
         public CodeJutsuDb(DbContextOptions<CodeJutsuDb> options): base(options) { }
+
+        public DbSet<Problem> Problems => Set<Problem>();
+        public DbSet<Submission> Submissions => Set<Submission>();
     }
 }

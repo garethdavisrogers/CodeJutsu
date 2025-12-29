@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CodeJutsu.Platform")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fead698eb9189be8c60ed747c3adeab57653734d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3be7b7b5e61f1a693ac172ca91293dcfa5f518dd")]
 [assembly: System.Reflection.AssemblyProductAttribute("CodeJutsu.Platform")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CodeJutsu.Platform")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

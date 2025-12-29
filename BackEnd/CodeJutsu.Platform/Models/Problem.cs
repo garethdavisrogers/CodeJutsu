@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 
 namespace CodeJutsu.Platform.Models;
 
-public sealed class CodingProblem
+public sealed class Problem
 {
     // Use string IDs for stable JSON (e.g. "two-sum"). You can still map to Guid internally if you want.
     public string Id { get; init; } = default!;
